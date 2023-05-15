@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'calculator_widget.dart';
 
 class Calculator extends StatefulWidget {
   @override
@@ -19,6 +18,7 @@ class _CalculatorState extends State<Calculator> {
     super.initState();
     result = '0';
   }
+
 
   void buttonPressed(String buttonText) {
     if (result == '0') {
@@ -101,24 +101,32 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
- Widget buildButton(String buttonText) {
+  
+  
+   Widget buildButton(String buttonText) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: OutlinedButton(
-          onPressed: () => buttonPressed(buttonText),
-          child: Text(
-            buttonText,
-            style: TextStyle(
-            //color:buttonText == 'C'? Colors.blueGrey :customColor,
-            color: buttonText == 'C' ? Colors.blueGrey : buttonText == '=' ? Colors.white : customColor,
-         
-            fontSize: 20.0),
+        padding: const EdgeInsets.all(10.0),
+        child: SizedBox(
+          width: 75.0,
+          height: 50.0,
+          child: OutlinedButton(
+            onPressed: () => buttonPressed(buttonText),
+            child: Text(
+              buttonText,
+              style: 
+              TextStyle(fontWeight: FontWeight.bold,
+               color: buttonText == 'C' ? Colors.red : buttonText == '=' ? Colors.white : Colors.green,
+              fontSize: 30.0,),
+              
+            ),
+            style: OutlinedButton.styleFrom(
+            backgroundColor: buttonText == '=' ? Colors.green: Colors.white,
+            foregroundColor: buttonText == '=' ? Colors.white : Colors.green,
           ),
-          style: OutlinedButton.styleFrom(
-          backgroundColor: buttonText == '=' ? customColor: Colors.white,
-          foregroundColor: buttonText == '=' ? Colors.white : customColor,
-        ),
+          
+            
+          ),
         ),
       ),
     );
@@ -126,60 +134,76 @@ class _CalculatorState extends State<Calculator> {
 
   @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Calculator'),
-    ),
-    body: Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Container(
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
-            child: Text(
-              operation + (tempResult == '0' ? '' : tempResult),
-              style: TextStyle(fontSize: 48.0),
+  return MaterialApp(
+    home: Directionality(
+      textDirection: TextDirection.ltr, 
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Calculator', 
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 25.0),
+           
+          ),
+        ),
+        body: Container(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerRight,
+                  padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
+                  child: Text(
+                    operation + (tempResult == '0' ? '' : tempResult),
+                    style: TextStyle(fontSize: 48.0),
+                  ),
+                ),
+                SizedBox(height: 20.0,),
+        
+                Row(
+                  children: <Widget>[
+                    buildButton('7'),
+                    buildButton('8'),
+                    buildButton('9'),
+                    buildButton('/'),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    buildButton('4'),
+                    buildButton('5'),
+                    buildButton('6'),
+                    buildButton('x'),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    buildButton('1'),
+                    buildButton('2'),
+                    buildButton('3'),
+                    buildButton('-'),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    buildButton('.'),
+                    buildButton('0'),
+                    buildButton('C'),
+                    buildButton('+'),
+                  ],
+                ),
+                SizedBox(height: 10.0,),
+                Row(
+                  children: <Widget>[
+                    buildButton('='),
+                  ],
+                ),
+              ],
             ),
           ),
-          Row(
-            children: <Widget>[
-              buildButton('7'),
-              buildButton('8'),
-              buildButton('9'),
-              buildButton('/'),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              buildButton('4'),
-              buildButton('5'),
-              buildButton('6'),
-              buildButton('x'),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              buildButton('1'),
-              buildButton('2'),
-              buildButton('3'),
-              buildButton('-'),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              buildButton('.'),
-              buildButton('0'),
-              buildButton('C'),
-              buildButton('+'),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              buildButton('='),
-            ],
-          ),
-        ],
+        ),
       ),
     ),
   );
