@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:device_preview/device_preview.dart';
+// import 'package:device_preview/device_preview.dart';
 import 'calculator.dart';
-void main() => runApp(DevicePreview(
-      enabled: true,
-      builder: (context) => MyApp(),
-    ),);
+void main() => runApp(
+//   DevicePreview(
+//       enabled: true,
+//       builder: (context) => 
+MyApp(),
+//     ),
+    );
 
 // ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MediaQuery(
       data: const MediaQueryData(),
       child: MaterialApp(
-        title: 'Calculator',
+        title: 'QuickDigits',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
            primarySwatch:Colors.green,

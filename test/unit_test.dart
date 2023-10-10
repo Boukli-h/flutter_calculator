@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_calculator/main.dart';
-import 'package:flutter_calculator/calculator.dart';
+import 'package:quickdigits/main.dart';
+import 'package:quickdigits/calculator.dart';
 
 void main() {
   testWidgets('Calculator App Test', (WidgetTester tester) async {

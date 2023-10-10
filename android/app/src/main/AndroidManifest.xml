@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_calculator">
+    package="com.example.quick_digits">
    <application
-        android:label="flutter_calculator"
-        android:name="${applicationName}"
+        android:label="QuickDigits"
+        android:name="${QuickDigits}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
